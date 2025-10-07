@@ -43,6 +43,9 @@ function Checkout() {
     <h3>Total: Ksh {totalPrice.toLocaleString()}</h3>
 </div>
 </div>
+<div className='pay-button'>
+  <button>Proceed to Payment</button>
+</div>
       </div>
     </>
   );
