@@ -1,0 +1,64 @@
+.checkout-card{
+    border: 2px solid black;
+    border-radius: 30px;
+    height: 250px;
+    width: 500px;
+    background-color: rgb(241, 239, 239);
+}
+.checkout-card-image{
+    object-fit: cover;
+    object-position: center;
+    height:150px;
+    width:150px;
+    border-radius: 20%;
+    margin-top:10px;
+    margin-left:10px;
+}
+.checkout-card-title{
+    font-size: 22px;
+     font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  color: #f71414;
+margin-left:20px;
+margin-top:10px;
+}
+.checkout-card-price{
+   font-size: 22px;
+     font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  color: #f71414;
+  display:flex;
+justify-content:flex-end;
+margin-right: 30px;
+margin-top:-150px;
+}
+.checkout-counter{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 30px;
+  margin-top: 20px;
+}
+.checkout-counter-button{
+  background-color: #cac8c8;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  cursor: pointer;
+}
+.checkout-quantity{
+  margin: 0 7px;
+  color: #f71414;
+  font-family: "Varela Round", sans-serif;
+}
+.checkout-total{
+     font-size: 16px;
+  color: #f71414;
+  font-family: "Varela Round", sans-serif;
+   display:flex;
+justify-content:flex-end;
+margin-right: 30px;
+margin-top: 20px;
+}
