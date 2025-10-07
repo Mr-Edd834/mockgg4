@@ -1,0 +1,11 @@
+.myorder-content{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #050505;
+    user-select: none;
+}

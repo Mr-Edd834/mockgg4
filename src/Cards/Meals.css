@@ -1,0 +1,129 @@
+.MealsCard{
+  border: 1px solid #000000;
+  border-radius: 30px;  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  background-color: #ffffffc9;
+  padding: 16px;
+  box-shadow: 0 25px 30px rgba(0, 0, 0, 0.1);
+  max-width: 232px;
+  height: 417px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  user-select: none;
+  
+}
+.MealsCard:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(-10px);
+  box-shadow: 0 40px 50px rgba(0, 0, 0, 0.2);
+}
+
+.meals-card-image{
+  height: 150px;
+  width: 230px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 28px;
+  margin-bottom: 8px;
+  margin-top: -20px;
+}
+.meals-card-content{
+  width: 100%;
+  margin-left: 0%;
+  margin-bottom: 15px;
+  margin-top: 10px;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+.meals-card-title{
+  font-size: 19px;
+  color: #f71414;
+margin-left: 0%;
+display:flex;
+align-items: center;
+margin-bottom: 0px;
+margin-top: -10px;
+}
+.meals-card-description{
+  font-size: 14px;
+  color: #151330;
+  max-width: fit-content;
+  margin-bottom: 10px;
+}
+.meals-card-price{
+  font-size: 16px;
+  color: #f71414;
+  font-family: "Varela Round", sans-serif;
+    display:flex;
+  justify-content: flex-end;
+   display:inline;
+   margin-left: 50px;
+   margin-right: -50px;
+}
+
+.meals-icons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  display:grid;
+  grid-template-columns: auto auto;
+  gap : 57px;
+  margin-top: 10px;
+}
+.meals-counter-button{
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  margin: 7px;
+  cursor: pointer;
+}
+.meals-horizontal-line{
+  border: none;
+  border-top: 1px solid #949494;
+  margin: 10px 0;
+  width: 100%;
+}
+.meals-order-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 5px;
+  overflow: hidden;
+  border-radius: 50px;
+}
+.meals-order-button button{
+  background-color:  #f71414;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  user-select: none;
+  height: 30px;
+  width: 200px;
+  font-size: 16px;
+  margin-right: 5px;
+  margin-top: 0px;
+  font-family: "Varela Round", sans-serif;
+}
+.meals-order-button button:hover{
+  background-color:  #d40303;
+}
+
+.quantity{
+  font-size: 16px;
+  color: #f71414;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 500;
+  min-width: 20px;
+  text-align: center;
+}

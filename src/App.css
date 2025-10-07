@@ -1,0 +1,101 @@
+/* .App {
+  text-align: center;
+} */
+
+/* Full viewport setup */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Full page background class */
+.full-page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: -1;
+}
+
+/* Main content area that adjusts based on sidebar state */
+.main-content {
+  margin-left: 120px; /* Space for collapsed sidebar (80px + 40px padding) */
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+  background-color: transparent; /* Remove solid background to show body background */
+  padding: 20px;
+}
+
+/* When on /login route: remove spacing so content can fill the viewport */
+.main-content.no-spacing {
+  margin-left: 0;
+  padding: 0;
+}
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* App.css */
+.page-content {
+  transition: margin-left 0.3s ease; 
+  padding: 20px;
+}
+
+.sidebar-collapsed ~ .page-content {
+  margin-left: 60px; 
+}
+
+.sidebar-expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #fff;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-expanded ~ .page-content {
+  margin-left: 0; 
+}
+

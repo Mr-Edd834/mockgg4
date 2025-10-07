@@ -1,0 +1,156 @@
+========================================
+   PARTNER/GRUBLINK BACKEND SETUP
+========================================
+
+I've created the backend files for the Partnership feature.
+
+📁 FILES CREATED:
+  ✓ backend-auth-files/models/Partner.js
+  ✓ backend-auth-files/controllers/partnerController.js
+  ✓ backend-auth-files/routes/partnerRoutes.js
+
+========================================
+   STEP 1: Copy Files to Backend
+========================================
+
+Copy these files to your GGbackend folder:
+
+FROM → TO
+backend-auth-files/models/Partner.js → GGbackend/models/Partner.js
+backend-auth-files/controllers/partnerController.js → GGbackend/controllers/partnerController.js
+backend-auth-files/routes/partnerRoutes.js → GGbackend/routes/partnerRoutes.js
+
+========================================
+   STEP 2: Update server.js
+========================================
+
+Add these lines to your GGbackend/server.js:
+
+At the top with other imports:
+```javascript
+const partnerRoutes = require('./routes/partnerRoutes');
+```
+
+After your other routes:
+```javascript
+app.use('/api/partners', partnerRoutes);
+```
+
+Example:
+```javascript
+const express = require('express');
+const cors = require('cors');
+const authRoutes = require('./routes/authRoutes');
+const partnerRoutes = require('./routes/partnerRoutes'); // ADD THIS
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.use('/auth', authRoutes);
+app.use('/api/partners', partnerRoutes); // ADD THIS
+
+// ... rest of your code
+```
+
+========================================
+   STEP 3: Restart Backend
+========================================
+
+Stop your backend (Ctrl+C) and restart:
+```bash
+node server.js
+```
+
+OR
+```bash
+npm start
+```
+
+========================================
+   STEP 4: Test the Partnership Form
+========================================
+
+1. Go to your frontend: http://localhost:3000/partner
+
+2. Fill in the partnership form:
+   - Company Name: Test Company
+   - Director Name: John Doe
+   - Email: test@company.com
+   - Phone: +1234567890
+
+3. Click "Submit Application"
+
+4. Should see success message! ✅
+
+========================================
+   API ENDPOINTS CREATED
+========================================
+
+POST   /api/partners              - Submit new partnership application
+GET    /api/partners              - Get all applications (with optional ?status=pending)
+GET    /api/partners/:id          - Get single application
+PUT    /api/partners/:id/status   - Update application status (pending/approved/rejected)
+DELETE /api/partners/:id          - Delete application
+
+========================================
+   VIEW PARTNERSHIP APPLICATIONS
+========================================
+
+To see all submitted applications, you can:
+
+1. Use MongoDB Compass or Studio 3T
+2. Connect to your MongoDB
+3. Look in the "partners" collection
+
+OR use an API testing tool like Postman/Insomnia:
+GET http://localhost:5000/api/partners
+
+========================================
+   DATABASE SCHEMA
+========================================
+
+Partner Model:
+- companyName: String (required, min 2 characters)
+- directorName: String (required, min 2 characters)
+- email: String (required, valid email, unique)
+- phoneNumber: String (required)
+- status: String (pending/approved/rejected, default: pending)
+- submittedAt: Date (auto-generated)
+- createdAt: Date (auto-generated)
+- updatedAt: Date (auto-generated)
+
+========================================
+   NEXT STEPS (OPTIONAL)
+========================================
+
+1. Create an admin dashboard to view/manage applications
+2. Add email notifications when applications are submitted
+3. Add more fields (business type, address, etc.)
+4. Protect admin routes with authentication
+
+========================================
+   TROUBLESHOOTING
+========================================
+
+❌ "Cannot find module './routes/partnerRoutes'"
+   → Make sure you copied the files to the correct folders
+   → Check file paths match the require() statements
+
+❌ Form submission fails
+   → Check backend is running
+   → Check backend console for errors
+   → Check browser console (F12) for errors
+
+❌ Duplicate email error
+   → Email already exists in database
+   → Use a different email or delete the existing record
+
+========================================
+   ✅ YOU'RE DONE!
+========================================
+
+Your partnership form is ready to accept applications!
+All submissions will be saved to MongoDB automatically.
+

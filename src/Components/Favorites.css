@@ -1,0 +1,25 @@
+.favorites-content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 30px;
+    row-gap: 50px;
+    justify-content: center;
+    align-items: start;
+    margin-top: 50px;
+    padding: 20px;
+    user-select: none;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.favorites-text {
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    user-select: none;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    margin-top: 0;
+    text-align: center;
+    line-height: 1.5;
+  }
