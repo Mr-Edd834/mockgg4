@@ -2,7 +2,7 @@
 import React from 'react';
 import './App.css';
 
-import Home from './Components/Home';
+import Home from './components/home';
 import { animate } from 'animejs';
 
 import Profile from './Components/Profile';
@@ -19,7 +19,7 @@ import Sidebar from './Components/Sidebar';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 
-import "./Components/Home.css";
+
 
 import { useState } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
@@ -37,6 +37,7 @@ function App() {
   const hideNavigation = isLoginRoute || isSignupRoute;
 
   return (
+    
     <div className={`App ${hideNavigation ? 'login-mode' : ''}`}>
       {!hideNavigation && <Sidebar onToggle={setIsCollapsed} />}
       <div className={`main-content ${hideNavigation ? 'no-spacing' : ''}`}>
@@ -65,6 +66,8 @@ function App() {
       </div>
     </div>
   );
+  // in App.js
+  console.log("Force rebuild", new Date());
 }
 
 export default App;
