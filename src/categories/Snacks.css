@@ -1,5 +1,12 @@
 .page-content {
-  min-height: 100vh;
+  /* min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  user-select: none; */
+   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +16,14 @@
 }
 
 .snacks-cards-wrapper {
-  min-height: 100vh;
+  /* min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; */
+   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,10 +33,19 @@
 }
 
 .page-content-snacks{
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 30px;
     row-gap: 50px;
+    justify-content: center;
+    align-items: start;
+    padding: 20px;
+    user-select: none;
+    width: 100%; */
+       display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 130px;
+    grid-row-gap: 200px !important;
     justify-content: center;
     align-items: start;
     padding: 20px;

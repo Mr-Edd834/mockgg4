@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-// For local development (ACTIVE)
-const API_URL = 'http://localhost:5000/auth';
+// // For local development (ACTIVE)
+// const API_URL = 'http://localhost:5000/auth';
 
-// For production on Render (uncomment when deploying):
-// const API_URL = 'https://ggbackend-1.onrender.com/auth';
+const API_URL = 'https://ggbackend-1.onrender.com/auth';
 
 class AuthService {
   // Register new user

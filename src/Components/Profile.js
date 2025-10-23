@@ -1,5 +1,9 @@
 import react from 'react';
 import React, { useEffect, useState } from "react";
+import './Profile.css';
+import { useAuth } from '../Contexts/AuthContext';
+import { useNavigate } from "react-router-dom";
+
 
 
 const Profile = () => {
@@ -8,76 +12,46 @@ const Profile = () => {
   };
 
   const [user, setUser] = useState(null);
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+ const {currentUser, logout} = useAuth();
+  useEffect(() => { 
+    if (currentUser) {
+      setUser(currentUser);
+    }
+  }, [currentUser]);
+   async function handleLogout() {
+    setError("");
+    try{
+         await logout();
+         navigate("/login");
+         alert("You have been logged out");
 
-  useEffect(() => {
-    // Fetch current user from backend
-    fetch("https://ggbackend-1.onrender.com/auth/user", {
-      credentials: "include", // send session cookie
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.user) {
-          setUser(data.user);
-          localStorage.setItem("user", JSON.stringify(data.user));
-        } else {
-          window.location.href = "/login";
-        }
-      })
-      .catch(err => console.error("Error fetching user:", err));
-  }, []);
+    }catch{
+      setError("Failed to log out");
+    }
+  
+  } 
 
-  const handleLogout = () => {
-    fetch("https://ggbackend-1.onrender.com/auth/logout", {
-      credentials: "include",
-    }).then(() => {
-      localStorage.removeItem("user");
-      window.location.href = "/";
-    });
-  };
-
+ 
   return (
     <>
       <div className="full-page-background" style={profileBackgroundStyle}></div>
       <div className='page-content'>
-    <div style={{
-      textAlign: "center",
-      padding: "2rem",
-      fontFamily: "sans-serif",
-    }}>
-      {user ? (
-        <>
-          <img
-            src={user.profilePic}
-            alt="Profile"
-            style={{
-              width: "100px",
-              height: "100px",
-              borderRadius: "50%",
-              marginBottom: "1rem",
-            }}
-          />
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
-          <button
-            onClick={handleLogout}
-            style={{
-              marginTop: "1rem",
-              background: "#d9534f",
-              color: "white",
-              border: "none",
-              padding: "0.6rem 1.2rem",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-          >
-            Logout
-          </button>
-        </>
-      ) : (
-        <p>Loading profile...</p>
-      )}
+  
+          <button className="profile-button" onClick={handleLogout}>Log Out</button>
+        
+        <div className='profile-details'>
+          <h1>Profile</h1>
+          {user && (
+            <div>
+              <p><strong>Name:</strong> {user.displayName || "N/A"}</p>
+              <p><strong>Email:</strong> {user.email}</p>
+            </div>
+          )}
+          </div> 
+ 
     </div>
-      </div>
     </>
   );
 }

@@ -98,7 +98,7 @@ const Sidebar = ({ onToggle }) => {
         /* Expanded Sidebar */
         <div className="sidebar-expanded">
           <div className="sidebar-header">
-            <h2>GOGRUB</h2>
+            <h2>GoGrub</h2>
             <button className="toggle-btn" onClick={toggleSidebar}>
               ←
             </button>

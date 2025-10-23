@@ -1,5 +1,5 @@
 .favorites-content{
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 30px;
     row-gap: 50px;
@@ -10,7 +10,16 @@
     user-select: none;
     max-width: 1200px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
+      display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 130px;
+    grid-row-gap: 200px !important;
+    justify-content: center;
+    align-items: start;
+    padding: 20px;
+    user-select: none;
+    width: 100%;
 }
 .favorites-text {
     font-family: 'Poppins', sans-serif;

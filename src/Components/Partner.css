@@ -1,0 +1,102 @@
+.partner-full-page-background{
+  position: absolute; /* instead of fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh; /* grows beyond viewport if content is long */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1200;
+}
+.partner-page{
+    padding: 30px;
+    gap: 20px;
+    border-radius: 10px;    
+    width: 1000px;
+    height: auto;
+     backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+   margin:auto;
+  user-select: none;
+}
+.partner-page:hover {
+  transform: translateY(-5px);
+  transition: all 0.7s ease-in-out;
+  box-shadow: 0 12px 45px rgba(99, 93, 93, 0.336);
+}
+
+.partner-header{
+    font-family: quicksand, sans-serif;
+    color: hwb(240 7% 77%);
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+    display :grid;
+    grid-template-columns: auto;
+}
+.partner-header h2{
+    margin-left: 150px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: 700;
+}
+.partner-header p{
+    font-size: 30px;
+    font-weight: 600;
+    color: hwb(240 7% 77%);
+    margin-bottom: 30px;
+}
+
+.partner-forms{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+}
+.partner-form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.partner-form h3{
+    font-family: quicksand, sans-serif;
+    color: hwb(240 7% 77%);
+    font-size: 20px;
+    font-weight: 600;
+}
+.partner-forms input{
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid hwb(240 7% 77%);
+    font-size: 16px;
+    font-family: quicksand, sans-serif;
+    resize: vertical;
+}
+.partner-forms textarea{
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid hwb(240 7% 77%);
+    font-size: 16px;
+    font-family: quicksand, sans-serif;
+    resize: vertical;
+    min-height: 100px;
+}
+.partner-forms button{
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background-color: hwb(240 7% 77%);
+    color: white;
+    font-size: 16px;
+    font-family: quicksand, sans-serif;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.partner-forms button:hover{
+    background-color: hwb(240 8% 53%);
+    transition: all 0.3s ease-in-out;
+}

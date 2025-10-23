@@ -243,25 +243,27 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+   border-radius: 20px 20px 20px 20px;
 }
 
 .input-group {
   position: relative;
   display: flex;
   align-items: center;
+   border-radius: 20px 20px 20px 20px;
 }
 
 .input-icon {
   position: absolute;
   left: 15px;
   z-index: 2;
-  color: #999;
+  color: #c40707;
 }
 
 .login-input {
   width: 100%;
   padding: 15px 15px 15px 50px;
-  border: 2px solid #e1e1e1;
+  border: 1px solid #c40707;
   border-radius: 20px 20px 20px 20px;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -358,7 +360,7 @@
 .forgot-link {
   background: none;
   border: none;
-  color: #999;
+  color: #696868;
   text-decoration: none;
   font-size: 0.9rem;
   cursor: pointer;

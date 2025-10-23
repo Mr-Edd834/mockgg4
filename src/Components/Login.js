@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { Mail, Lock, Chrome, ArrowRight, Eye, EyeOff } from "lucide-react";
-import authService from "../utils/auth";
-import { useNavigate } from "react-router-dom";
+import {useAuth} from '../Contexts/AuthContext';
+import { useNavigate,Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,21 +13,9 @@ const Login = () => {
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState("");
 
-  useEffect(() => {
-    // Check if user is already authenticated
-    const checkAuth = async () => {
-      if (authService.isAuthenticated()) {
-        const result = await authService.verifyToken();
-        if (result.valid) {
-          // User is already logged in, redirect to home
-          navigate("/");
-          return;
-        }
-      }
-    };
-    
-    checkAuth();
+  const {login} = useAuth();
 
+  useEffect(() => { 
     // Load saved email if remember me was checked
     const savedEmail = localStorage.getItem("gg_saved_email");
     const savedRemember = localStorage.getItem("gg_remember_me") === "true";
@@ -59,39 +47,26 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleEmailSignIn = async (event) => {
-    event.preventDefault();
-    if (isSubmitting) {
-      return;
-    }
-    if (!validate()) {
-      return;
-    }
-    
-    setIsSubmitting(true);
-    setLoginError("");
+ const handleEmailSignIn = async (event) => {
+  event.preventDefault();
+  if (isSubmitting) return;
+  if (!validate()) return;
 
-    try {
-      const result = await authService.login(
-        credentials.email,
-        credentials.password,
-        rememberMe
-      );
+  setIsSubmitting(true);
+  setLoginError("");
 
-      if (result.success) {
-        console.log("Login successful", result.user);
-        // Redirect to home page or dashboard
-        navigate("/");
-      } else {
-        setLoginError(result.message || "Login failed");
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setLoginError(error.message || "An error occurred during login");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  try {
+    await login(credentials.email, credentials.password);
+    console.log("✅ Login successful");
+    navigate("/"); // redirect to home
+  } catch (error) {
+    console.error("❌ Login failed:", error);
+    setLoginError(error.message || "An error occurred during login");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
   const loginBackgroundStyle = {
     backgroundImage: "url('https://images.unsplash.com/flagged/photo-1593005510509-d05b264f1c9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVkfGVufDB8fDB8fHww')"
   };
@@ -113,7 +88,7 @@ const Login = () => {
           <div className="login-form">
             <div className="login-header">
               <h1>Welcome back</h1>
-              <p>Sign in to keep your orders moving.</p>
+              <p>Log in to keep your orders moving.</p>
             </div>
 
             <button
@@ -126,7 +101,7 @@ const Login = () => {
             </button>
 
             <div className="login-divider">
-              <span>or sign in with email</span>
+              <span>or log in with email</span>
             </div>
 
             <form onSubmit={handleEmailSignIn} noValidate>
@@ -137,7 +112,7 @@ const Login = () => {
               )}
               <div className="login-form-fields">
                 <div className="input-group">
-                  <Mail size={18} className="input-icon" />
+                  <Mail size={18} color='red' className="input-icon" />
                   <input
                     type="email"
                     name="email"
@@ -188,8 +163,10 @@ const Login = () => {
                   Remember me
                 </label>
                 <div className="forgot-password">
-                  <button type="button" className="forgot-link">
+                  <button type="button" className="forgot-link" onClick={() => navigate("/forgot-password")}>
+                    <Link to="/forgot-password">
                     Forgot password?
+                    </Link>
                   </button>
                 </div>
               </div>
@@ -199,7 +176,7 @@ const Login = () => {
                 className="login-button"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Signing in..." : "Sign in"}
+                {isSubmitting ? "Logging in..." : "Log in"}
                 <ArrowRight size={18} className="login-button-icon" />
               </button>
             </form>

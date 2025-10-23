@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Signup.css";
-import { Mail, Lock, User, ArrowRight, Eye, EyeOff } from "lucide-react";
-import authService from "../utils/auth";
+import { Mail, Lock, User, Chrome, ArrowRight, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import {useAuth} from '../Contexts/AuthContext';
 
 const Signup = () => {
+  const {signUp} = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ 
     name: "", 
@@ -26,8 +27,8 @@ const Signup = () => {
   const validate = () => {
     const nextErrors = { name: "", email: "", password: "", confirmPassword: "", general: "" };
     
-    if (formData.name.trim().length < 2) {
-      nextErrors.name = "Name must be at least 2 characters";
+    if (formData.name.trim().length < 3) {
+      nextErrors.name = "Name must be at least 3 characters";
     }
     
     const emailOk = /.+@.+\..+/.test(formData.email.trim());
@@ -56,46 +57,31 @@ const Signup = () => {
     }
   };
 
-  const handleSignup = async (event) => {
-    event.preventDefault();
-    if (isSubmitting) {
-      return;
-    }
-    if (!validate()) {
-      return;
-    }
-    
-    setIsSubmitting(true);
-    setErrors((prev) => ({ ...prev, general: "" }));
+ const handleSignup = async (event) => {
+  event.preventDefault();
+  if (isSubmitting) return;
+  if (!validate()) return;
 
-    try {
-      const result = await authService.register(
-        formData.email,
-        formData.password,
-        formData.name
-      );
+  setIsSubmitting(true);
+  setErrors((prev) => ({ ...prev, general: "" }));
 
-      if (result.success) {
-        console.log("Registration successful", result.user);
-        // User is automatically logged in after registration
-        // Redirect to home page
-        navigate("/");
-      } else {
-        setErrors((prev) => ({ 
-          ...prev, 
-          general: result.message || "Registration failed" 
-        }));
-      }
-    } catch (error) {
-      console.error("Registration error:", error);
-      setErrors((prev) => ({ 
-        ...prev, 
-        general: error.message || "An error occurred during registration" 
-      }));
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  try {
+    // call Firebase signup directly
+    await signUp(formData.email, formData.password);
+
+    console.log("✅ User registered with Firebase");
+    navigate("/"); // redirect to home after signup
+  } catch (error) {
+    console.error("❌ Signup failed:", error);
+    setErrors((prev) => ({
+      ...prev,
+      general: error.message("Failed to register") || "An error occurred during registration",
+    }));
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   const signupBackgroundStyle = {
     backgroundImage: "url('https://images.unsplash.com/flagged/photo-1593005510509-d05b264f1c9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVkfGVufDB8fDB8fHww')"
@@ -121,6 +107,19 @@ const Signup = () => {
               <p>Sign up to get started with GoGrub.</p>
             </div>
 
+             <button
+              type="button"
+              className="google-button"
+            
+            >
+              <Chrome size={18} className="google-icon" />
+              Continue with Google
+            </button>
+
+ <div className="login-divider">
+              <span>or sign up with email</span>
+            </div>
+
             <form onSubmit={handleSignup} noValidate>
               {errors.general && (
                 <div className="signup-error-message">
@@ -136,7 +135,7 @@ const Signup = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Full name"
+                    placeholder="Username"
                     className={`signup-input${errors.name ? " error" : ""}`}
                     autoComplete="name"
                     required
@@ -231,7 +230,7 @@ const Signup = () => {
                 className="login-text"
                 onClick={() => navigate("/login")}
               >
-                Sign in
+                Log in
               </button>
             </div>
           </div>

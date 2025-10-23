@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 
 import Home from './Components/Home';
-import { animate } from 'animejs';
+// import { animate } from 'animejs';
 
 import Profile from './Components/Profile';
 
@@ -18,7 +18,8 @@ import Favorites from './Components/Favorites';
 import Sidebar from './Components/Sidebar';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
-
+import ForgotPassword from './ForgotPassword';
+import  Partner from './Components/Partner';
 
 
 import { useState } from 'react';
@@ -27,7 +28,8 @@ import Myorder from './Components/Myorder';
 import Delightmeals from './categories/Delightmeals';
 import Fastfood from './categories/Fastfood';
 import Snacks from './categories/Snacks';
-import ProtectedRoute from "./Components/ProtectedRoute";
+import PrivateRoute from "./Components/ProtectedRoute";
+import AuthProvider from './Contexts/AuthContext';
 
 function App() {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -37,14 +39,18 @@ function App() {
   const hideNavigation = isLoginRoute || isSignupRoute;
 
   return (
-    
+    <>
+     <AuthProvider>
     <div className={`App ${hideNavigation ? 'login-mode' : ''}`}>
       {!hideNavigation && <Sidebar onToggle={setIsCollapsed} />}
       <div className={`main-content ${hideNavigation ? 'no-spacing' : ''}`}>
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+         <Route path="/partner" element={<Partner />} />
           <Route path="/signup" element={<Signup />} />
+         <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/orderhistory" element={<Orderhistory />} />
@@ -58,13 +64,16 @@ function App() {
           <Route path="/shopping" element={<Shopping/>} />
 
              {/* Protected routes */}
-        <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
+        {/* <Route path="/checkout" element={<ProtectedRoute><Checkout /></ProtectedRoute>} />
         <Route path="/myorder" element={<ProtectedRoute><Myorder /></ProtectedRoute>} />
         <Route path="/orderhistory" element={<ProtectedRoute><Orderhistory /></ProtectedRoute>} />
-        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+        <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} /> */}
         </Routes>
+ 
       </div>
     </div>
+    </AuthProvider>
+    </>
   );
   // in App.js
   console.log("Force rebuild", new Date());

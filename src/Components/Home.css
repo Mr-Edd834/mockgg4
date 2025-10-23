@@ -255,9 +255,9 @@ margin-bottom: 100px;
 .input-wrapper input {
   padding-left: 45px; /* Push text away from the icon */
   width: 100%;
-  color:#e50914;
+  color:#c2000a;
   background-color:#ffffff;
-  border: 2px solid #ff4d4d;
+  border: 2px solid #ff0000;
   border-radius: 20px;
   height: 40px;
   font-family: 'Poppins', sans-serif;
