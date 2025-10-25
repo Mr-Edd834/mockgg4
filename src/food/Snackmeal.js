@@ -5,6 +5,9 @@ const snackFoodMenu = [
     name: "Fruit Salad",
     image: "https://images.unsplash.com/photo-1613082487279-1e16f1e81505?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnJ1aXQlMjBzYWxhZHxlbnwwfHwwfHx8MA%3D%3D",
     price: 500,
+    category: "Snacks",
+    rating: 4.6,
+    prepTime: "5-8 mins",
     description: "Get your favorite fruit salad at a discount today at GoGrub."
   },
   {
@@ -12,6 +15,9 @@ const snackFoodMenu = [
     name: "Samosas (6 pcs)",
     image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2Ftb3NhfGVufDB8fDB8fHww",
     price: 150,
+    category: "Snacks",
+    rating: 4.7,
+    prepTime: "8-10 mins",
     description: "Crispy golden samosas filled with spiced vegetables or meat."
   },
   {
@@ -19,6 +25,9 @@ const snackFoodMenu = [
     name: "Spring Rolls",
     image: "https://images.unsplash.com/photo-1541529086526-db283c563270?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3ByaW5nJTIwcm9sbHN8ZW58MHx8MHx8fDA%3D",
     price: 250,
+    category: "Snacks",
+    rating: 4.5,
+    prepTime: "10-12 mins",
     description: "Fresh spring rolls with vegetables and sweet chili sauce."
   },
   {
@@ -26,6 +35,9 @@ const snackFoodMenu = [
     name: "Potato Bhajias",
     image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmhhamlhfGVufDB8fDB8fHww",
     price: 180,
+    category: "Snacks",
+    rating: 4.6,
+    prepTime: "10-15 mins",
     description: "Spicy potato bhajias served hot with tamarind sauce."
   },
   {
@@ -33,6 +45,9 @@ const snackFoodMenu = [
     name: "Chicken Skewers",
     image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMHNrZXdlcnN8ZW58MHx8MHx8fDA%3D",
     price: 400,
+    category: "Snacks",
+    rating: 4.8,
+    prepTime: "12-15 mins",
     description: "Grilled chicken skewers marinated in special spices."
   },
   {
@@ -40,6 +55,9 @@ const snackFoodMenu = [
     name: "Onion Rings",
     image: "https://images.unsplash.com/photo-1639024471283-03518883512d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b25pb24lMjByaW5nc3xlbnwwfHwwfHx8MA%3D%3D",
     price: 300,
+    category: "Snacks",
+    rating: 4.4,
+    prepTime: "8-10 mins",
     description: "Crispy battered onion rings with ranch dipping sauce."
   },
   {
@@ -47,6 +65,9 @@ const snackFoodMenu = [
     name: "Mandazi (6 pcs)",
     image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWFuZGF6aXxlbnwwfHwwfHx8MA%3D%3D",
     price: 120,
+    category: "Snacks",
+    rating: 4.5,
+    prepTime: "5-8 mins",
     description: "Sweet Kenyan mandazi, perfect for breakfast or snack time."
   },
   {
@@ -54,6 +75,9 @@ const snackFoodMenu = [
     name: "Cheese Sticks",
     image: "https://images.unsplash.com/photo-1531749668029-2db88e4276c7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hlZXNlJTIwc3RpY2tzfGVufDB8fDB8fHww",
     price: 350,
+    category: "Snacks",
+    rating: 4.3,
+    prepTime: "10-12 mins",
     description: "Mozzarella cheese sticks fried until golden and gooey."
   },
   {
@@ -61,6 +85,9 @@ const snackFoodMenu = [
     name: "Popcorn Chicken",
     image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9wY29ybiUyMGNoaWNrZW58ZW58MHx8MHx8fDA%3D",
     price: 280,
+    category: "Snacks",
+    rating: 4.4,
+    prepTime: "8-10 mins",
     description: "Bite-sized crispy chicken pieces perfect for sharing."
   }
 ];
