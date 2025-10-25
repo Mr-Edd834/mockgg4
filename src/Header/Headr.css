@@ -1,0 +1,10 @@
+.header{
+height:30vw;
+width: 100%;
+    margin:30px auto;
+    background:url('https://images.unsplash.com/photo-1568135012847-ce2c8d92a2a7?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFzYWduYSUyMHN2Z3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=500') no-repeat center center/cover;
+    border-radius:15px;
+      object-fit: contain;
+      background-size: contain;
+      position:relative
+}

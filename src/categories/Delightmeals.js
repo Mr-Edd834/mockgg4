@@ -71,7 +71,7 @@ const toggleFavorite = (cardId) => {
             </div>
             <hr className='meals-horizontal-line'></hr>
             <div className='meals-order-button'>
-               <button>Grub it!</button>
+               <button onClick={increase}>Grub it!</button>
             </div>
         </div>
         
@@ -104,7 +104,7 @@ const toggleFavorite = (cardId) => {
             </div>
             <hr className='meals-horizontal-line'></hr>
             <div className='meals-order-button'>
-               <button>Grub it!</button>
+               <button onClick={increase}>Grub it!</button>
             </div>
         </div>
         
@@ -137,7 +137,7 @@ const toggleFavorite = (cardId) => {
             </div>
             <hr className='meals-horizontal-line'></hr>
             <div className='meals-order-button'>
-               <button>Grub it!</button>
+               <button onClick={increase}>Grub it!</button>
             </div>
         </div>
         
@@ -170,7 +170,7 @@ const toggleFavorite = (cardId) => {
             </div>
             <hr className='meals-horizontal-line'></hr>
             <div className='meals-order-button'>
-               <button>Grub it!</button>
+               <button onClick={increase}>Grub it!</button>
             </div>
         </div>
         
@@ -203,7 +203,7 @@ const toggleFavorite = (cardId) => {
             </div>
             <hr className='meals-horizontal-line'></hr>
             <div className='meals-order-button'>
-               <button>Grub it!</button>
+               <button onClick={increase}>Grub it!</button>
             </div>
         </div>
         
@@ -236,7 +236,7 @@ const toggleFavorite = (cardId) => {
             </div>
             <hr className='meals-horizontal-line'></hr>
             <div className='meals-order-button'>
-               <button>Grub it!</button>
+               <button onClick={increase}>Grub it!</button>
             </div>
             </div>
           </div>
