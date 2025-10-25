@@ -13,6 +13,8 @@ import { Link } from "react-router-dom";
 const Sidebar = ({ onToggle }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [activeItem, setActiveItem] = useState("dashboard");
+  const [hasCartItems, setHasCartItems] = useState(false);
+
   const sidebarRef = useRef(null);
   
 
@@ -88,7 +90,11 @@ const Sidebar = ({ onToggle }) => {
                 onClick={() => handleIconClick(item.id)}
               >
                 <Link to={item.path} >
-                <span className="menu-icon">{item.icon}</span>
+             <span className="menu-icon">
+  {item.icon}
+  {item.id === "bills" && hasCartItems && <span className="cart-dot"></span>}
+</span>
+
                 </Link>
               </div>
             ))}
@@ -102,6 +108,8 @@ const Sidebar = ({ onToggle }) => {
             <button className="toggle-btn" onClick={toggleSidebar}>
               ←
             </button>
+<button className="shiny-btn" onClick={() => setHasCartItems(!hasCartItems)}> Cart Dot</button>
+
           </div>
           <div className="sidebar-menu">
             {menuItems.map((item) => (
@@ -111,7 +119,11 @@ const Sidebar = ({ onToggle }) => {
                 onClick={() => handleIconClick(item.id)}
               >
               <Link to={item.path} >
-                <span className="menu-icon">{item.icon}</span>
+                <span className="menu-icon">
+  {item.icon}
+  {item.id === "bills" && hasCartItems && <span className="cart-dot"></span>}
+</span>
+
                 <span className="menu-label">{item.label}</span>
                 </Link>
               </div>
@@ -120,6 +132,7 @@ const Sidebar = ({ onToggle }) => {
         </div>
       )}
     </div>
+    
   );
 };
 
