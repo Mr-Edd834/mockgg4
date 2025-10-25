@@ -254,3 +254,10 @@
   transition: ease-in-out 0.7s;
 }
 
+/* Hide sidebar on mobile - bottom navbar will replace it */
+@media (max-width: 480px) {
+  .sidebar-container {
+    display: none;
+  }
+}
+

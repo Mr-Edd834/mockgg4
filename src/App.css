@@ -38,6 +38,19 @@ html, body {
   padding: 0;
 }
 
+/* Mobile adjustments - no sidebar, bottom navbar instead */
+@media (max-width: 480px) {
+  .main-content {
+    margin-left: 0;
+    padding: 10px;
+    padding-bottom: 120px; /* Space for bottom navbar */
+  }
+  
+  .main-content.no-spacing {
+    padding-bottom: 0; /* Login/signup pages don't need navbar space */
+  }
+}
+
 
 .App-logo {
   height: 40vmin;

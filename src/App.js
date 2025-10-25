@@ -16,6 +16,7 @@ import Shopping from './Components/Shopping';
 import Checkout from './Components/Checkout';
 import Favorites from './Components/Favorites';
 import Sidebar from './Components/Sidebar';
+import BottomNavbar from './Components/BottomNavbar';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import ForgotPassword from './ForgotPassword';
@@ -43,6 +44,7 @@ function App() {
      <AuthProvider>
     <div className={`App ${hideNavigation ? 'login-mode' : ''}`}>
       {!hideNavigation && <Sidebar onToggle={setIsCollapsed} />}
+      {!hideNavigation && <BottomNavbar />}
       <div className={`main-content ${hideNavigation ? 'no-spacing' : ''}`}>
         
         <Routes>

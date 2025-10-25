@@ -1,25 +1,40 @@
 .favorites-content{
-    /* display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 30px;
-    row-gap: 50px;
-    justify-content: center;
-    align-items: start;
-    margin-top: 50px;
-    padding: 20px;
-    user-select: none;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto; */
-      display: grid;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 130px;
-    grid-row-gap: 200px !important;
+    grid-row-gap: 200px;
     justify-content: center;
     align-items: start;
     padding: 20px;
     user-select: none;
     width: 100%;
+}
+
+/* Responsive design for Favorites */
+@media (max-width: 1024px) {
+    .favorites-content {
+        grid-column-gap: 80px;
+        grid-row-gap: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .favorites-content {
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 50px;
+        grid-row-gap: 100px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .favorites-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 20px 10px;
+    }
 }
 .favorites-text {
     font-family: 'Poppins', sans-serif;

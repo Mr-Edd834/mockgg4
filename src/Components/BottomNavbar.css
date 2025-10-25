@@ -1,0 +1,164 @@
+/* Bottom Navbar - Mobile Only */
+.bottom-navbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* Sizing */
+  width: 90%;
+  max-width: 420px;
+  height: 70px;
+  
+  /* Styling inspired by reference image */
+  background: rgba(247, 20, 20, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 35px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), 
+              0 0 0 1px rgba(255, 255, 255, 0.1);
+  
+  /* Layout */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 15px;
+  
+  /* Smooth transitions for show/hide */
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  z-index: 1000;
+  user-select: none;
+}
+
+/* Visible state (scrolling up) */
+.bottom-navbar.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* Hidden state (scrolling down) */
+.bottom-navbar.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(120px);
+  pointer-events: none;
+}
+
+/* Nav Item Link */
+.nav-item-link {
+  text-decoration: none;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Individual Nav Item */
+.nav-item {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* Nav Icon */
+.nav-icon {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Hover effect */
+.nav-item:hover {
+  background-color: rgba(212, 3, 3, 0.6);
+  transform: translateY(-5px);
+}
+
+/* Active state (current page) */
+.nav-item.active {
+  background-color: rgba(212, 3, 3, 0.9);
+  transform: scale(1.1);
+}
+
+/* Cart notification dot */
+.nav-icon .cart-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #e53935;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive sizing for smaller phones */
+@media (max-width: 375px) {
+  .bottom-navbar {
+    width: 95%;
+    max-width: 360px;
+    height: 65px;
+    bottom: 15px;
+    border-radius: 30px;
+    padding: 8px 12px;
+  }
+  
+  .nav-item {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .nav-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 320px) {
+  .bottom-navbar {
+    width: 98%;
+    height: 60px;
+    bottom: 10px;
+    border-radius: 25px;
+    padding: 6px 10px;
+  }
+  
+  .nav-item {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .nav-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Ensure navbar only shows on mobile */
+@media (min-width: 481px) {
+  .bottom-navbar {
+    display: none;
+  }
+}
+

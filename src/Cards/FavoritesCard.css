@@ -1,19 +1,20 @@
 .favorites-card{
   border: 1px solid #000000;
   border-radius: 30px;
-   backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-    background-color: #ffffffc9;    
+  background-color: #ffffffc9;    
   padding: 16px;
   box-shadow: 0 25px 30px rgba(0, 0, 0, 0.1);
-max-width: 232px;
-  display:flex;
-  justify-content: center;
+  width: 100%;
+  max-width: 260px;
+  min-height: 440px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   user-select: none;
-
-  
 }
 .favorites-card:hover {
   transform: scale(1.05);
@@ -23,13 +24,15 @@ max-width: 232px;
 }
 
 .favorites-card-image{
+  width: calc(100% + 32px);
   height: 150px;
-  width: 230px;
+  margin-left: -16px;
+  margin-right: -16px;
   object-fit: cover;
   object-position: center;
-  border-radius: 30px;
+  border-radius: 28px 28px 0 0;
   margin-bottom: 8px;
-  margin-top: -33px;
+  margin-top: -16px;
 }
 .favorites-card-content{
   width: 100%;
@@ -68,8 +71,17 @@ max-width: 232px;
 .favorites-card-description{
   font-size: 14px;
   color: #151330;
-  max-width: fit-content;
-  margin-bottom: 2px;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  min-height: 40px;
+  max-height: 40px;
+  margin-bottom: 8px;
   margin-top: -10px;
 }
 .favorites-card-price{
@@ -115,7 +127,7 @@ max-width: 232px;
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 5px;
+  margin-top: auto;
   overflow: hidden;
   border-radius: 50px;
 }
@@ -135,4 +147,105 @@ max-width: 232px;
 }
 .favorites-order-button button:hover{
   background-color:  #d40303;
+}
+
+.favorites-quantity{
+  font-size: 16px;
+  color: #f71414;
+  font-family: "Varela Round", sans-serif;
+  font-weight: 500;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Responsive Layout for Favorites */
+@media (max-width: 1024px) {
+  .favorites-card-image {
+    height: 140px;
+  }
+}
+
+@media (max-width: 768px) {
+  .favorites-card {
+    max-width: 100%;
+    min-height: 420px;
+  }
+  
+  .favorites-card-image {
+    height: 130px;
+  }
+  
+  .favorites-card-title {
+    font-size: 17px;
+  }
+  
+  .favorites-card-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .favorites-card {
+    max-width: 100%;
+    width: 100%;
+    min-height: 380px;
+    padding: 14px;
+    margin: 0 auto;
+  }
+  
+  .favorites-card-image {
+    width: calc(100% + 28px);
+    height: 180px;
+    margin-left: -14px;
+    margin-right: -14px;
+    margin-top: -14px;
+    border-radius: 28px 28px 0 0;
+  }
+  
+  .favorites-card-title {
+    font-size: 18px;
+  }
+  
+  .favorites-card-description {
+    font-size: 14px;
+    min-height: 40px;
+    max-height: 40px;
+  }
+  
+  .favorites-card-price {
+    font-size: 18px;
+  }
+  
+  .favorites-order-button button {
+    width: 100%;
+    max-width: 100%;
+    height: 36px;
+    font-size: 16px;
+  }
+  
+  .favorites-counter-button {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 375px) {
+  .favorites-card {
+    max-width: 100%;
+    width: 100%;
+    min-height: 360px;
+    padding: 12px;
+  }
+  
+  .favorites-card-image {
+    width: calc(100% + 24px);
+    height: 160px;
+    margin-left: -12px;
+    margin-right: -12px;
+    margin-top: -12px;
+  }
+  
+  .favorites-card-title {
+    font-size: 17px;
+  }
 }

@@ -16,19 +16,10 @@
 }
 
 .page-content-fastfood{
-    /* display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 30px;
-    row-gap: 50px;
-    justify-content: center;
-    align-items: start;
-    padding: 20px;
-    user-select: none;
-    width: 100%; */
-     display: grid;
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 130px;
-    grid-row-gap: 200px !important;
+    grid-row-gap: 200px;
     justify-content: center;
     align-items: start;
     padding: 20px;
@@ -37,29 +28,29 @@
 }
 
 .fastfood-cards-wrapper {
-  /* min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto; */
     min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-  
 
 /* Responsive design for smaller screens */
+@media (max-width: 1024px) {
+    .page-content-fastfood {
+        grid-column-gap: 80px;
+        grid-row-gap: 150px;
+    }
+}
+
 @media (max-width: 768px) {
     .page-content-fastfood {
         grid-template-columns: repeat(2, 1fr);
-        column-gap: 20px;
-        row-gap: 50px;
+        grid-column-gap: 50px;
+        grid-row-gap: 100px;
+        padding: 15px;
     }
     
     .fastfood-cards-wrapper {
@@ -69,13 +60,15 @@
 
 @media (max-width: 480px) {
     .page-content-fastfood {
-        grid-template-columns: 1fr;
-        column-gap: 15px;
-        row-gap: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 20px 10px;
     }
     
     .fastfood-cards-wrapper {
-        padding: 5px;
+        padding: 10px;
     }
 }
 

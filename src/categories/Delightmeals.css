@@ -22,7 +22,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 130px;
-    grid-row-gap: 200px !important;
+    grid-row-gap: 200px;
     justify-content: center;
     align-items: start;
     padding: 20px;
@@ -31,11 +31,19 @@
 }
 
 /* Responsive design for smaller screens */
+@media (max-width: 1024px) {
+    .page-content-delightmeals {
+        grid-column-gap: 80px;
+        grid-row-gap: 150px;
+    }
+}
+
 @media (max-width: 768px) {
     .page-content-delightmeals {
         grid-template-columns: repeat(2, 1fr);
-        grid-column-gap: 20px;
-        grid-row-gap: 50px !important;
+        grid-column-gap: 50px;
+        grid-row-gap: 100px;
+        padding: 15px;
     }
     
     .delightmeals-cards-wrapper {
@@ -45,13 +53,15 @@
 
 @media (max-width: 480px) {
     .page-content-delightmeals {
-        grid-template-columns: 1fr;
-        grid-column-gap: 15px;
-        grid-row-gap: 50px !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 20px 10px;
     }
     
     .delightmeals-cards-wrapper {
-        padding: 5px;
+        padding: 10px;
     }
 }
 .slide-top {

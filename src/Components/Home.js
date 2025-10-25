@@ -71,43 +71,44 @@ const Home = () => {
 
   return (
     <>
-      <div className="full-page-background" style={{...homeBackgroundStyle, width: '100vw', height: '100vh'}}></div>
+      <div className="full-page-background" style={homeBackgroundStyle}></div>
       
-      {/* Login icon in top right corner */}
-      <div className="login-icon-container">
-        <LogIn 
-          className="login-icon" 
-          size={26} 
-          onClick={() => navigate('/login')}
-        />
+      {/* Header Section - Welcome & Login in one row, Search below */}
+      <div className="home-header-section">
+        <div className="home-header-content">
+          <SplitText
+            text="Welcome Mr.Edd,"
+            className="welcome-text"
+            delay={100}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}    
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="left"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
+          
+          <div className="login-icon-container" onClick={() => navigate('/login')}>
+            <LogIn 
+              className="login-icon" 
+              size={24} 
+            />
+            <span className="login-text">Login</span>
+          </div>
+        </div>
+        
+        <div className="input-wrapper">
+          <MapPin className="input-icon" size={20} />  
+          <input type="text" placeholder="Enter your location" />
+        </div>
       </div>
-     
- 
-  <SplitText
-    text="Welcome Mr.Edd,"
-    className="text-2xl font-semibold text-center"
-    delay={100}
-    duration={0.6}
-    ease="power3.out"
-    splitType="chars"
-    from={{ opacity: 0, y: 40 }}    
-    to={{ opacity: 1, y: 0 }}
-    threshold={0.1}
-    rootMargin="-100px"
-    textAlign="center"
-    onLetterAnimationComplete={handleAnimationComplete}
-  />
   
-      {/* <h1 id='welcome-message'>Welcome Mr.Edd,</h1> */} 
       <div className="page-content">
-      
       <div className="cards-wrapper">
         <div className="slide-top">
-       
-      <div className="input-wrapper">
-        <MapPin className="input-icon" size={20} />  
-<input type="text" placeholder="Enter your location" />
-      </div>
         {/* Container 1: Food Services */}
         <div className="cards-container">
           <div className="cards-grid-three">
