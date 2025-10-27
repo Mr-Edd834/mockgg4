@@ -152,7 +152,7 @@
   background: rgba(255, 255, 255, 0.95);
   color: #111111;
   border: 2px solid #e5e7eb;
-  border-radius: 90px;
+  border-radius: 70px 70px 50px 50px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
   display: flex;
   flex-direction: column;
@@ -202,7 +202,7 @@
   object-fit: cover;
   object-position: center;
   background: #f3f4f6;
-  border-radius: 90px 90px 0 0;
+  border-radius: 70px 70px 0 0;
 }
 
 .card-content {
@@ -229,7 +229,7 @@
 .card-button {
   width: 80%;
   padding: 10px 14px;
-  background-color: #f71414;
+  background-color: #ff0000;
   color: #ffffff;
   border: none;
   border-radius: 50px;
@@ -239,11 +239,35 @@ justify-content: center;
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-}
+  
+  &:hover {
+      background: rgba(255, 255, 255, 0.5);
+      /* box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1); */
+      cursor: pointer;
+      color: #f71414;
+      transform: translateY(-1px);
+      /* box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.432); */
+      transition: all 0.5s ease;
+      user-select: none;
+      font-size: 18px;
+      font-weight: 500;
+      border: 1px solid #f71414;
+  }
+  &:active {
+      transform: translateY(1px);
+      /* box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.473);
+  }
+  &:focus {
+      /* border-color: #f71414; */
+      /* background: rgba(255, 1, 1, 0.493); */
+      /* box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1); */
+  }
 
-.card-button:hover {
-  background-color: #d40303;
 }
+/* 
+.card-button:hover {
+  background-color: #d80505;
+} */
 
 .slide-top {
 	-webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -307,21 +331,31 @@ justify-content: center;
 .input-wrapper input {
   padding-left: 45px;
   width: 100%;
-  color: #c2000a;
-  background-color: #ffffff;
+  color: #000000;
+  background-color: #ffffff93;
   border: 2px solid #ff0000;
   border-radius: 20px;
   height: 40px;
   font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   transition: all 0.3s ease;
+  outline: none;
+  &:focus {
+    border-color: #f71414;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1);
+}
+&::placeholder {
+    color: rgba(255, 255, 255, 0.959);
+    position: center;
+}
 }
 
-.input-wrapper input:focus {
+/* .input-wrapper input:focus {
   outline: none;
   border-color: #ff0000;
   box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
-}
+} */
 
 /* Horizontal separator line */
 /* .wavy-separator {
@@ -379,7 +413,7 @@ justify-content: center;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 90px;
+  border-radius: 70px 70px 60px 60px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -389,7 +423,7 @@ justify-content: center;
   width: 100%;
   height: 160px;
   object-fit: cover;
-  border-radius: 90px 90px 0 0;
+  border-radius: 70px 70px 0 0;
 }
 /* Animations for white section cards are applied via JavaScript on scroll */
 .white-section .card#left-card.animate-left {

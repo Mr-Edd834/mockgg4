@@ -3,6 +3,9 @@ import './Checkout.css';
 import { Plus, Minus, Trash2, ShoppingCart } from "lucide-react";
 import { storeContext } from "../Contexts/storeContext";
 import { useNavigate } from 'react-router-dom';
+import { ShoppingBasket } from "lucide-react";
+
+
 
 function Checkout() {
   const checkoutBackgroundStyle = {
@@ -41,7 +44,7 @@ function Checkout() {
 
           {cartItems.length === 0 ? (
             <div className="empty-cart-message">
-              <div className="empty-cart-icon">🛒</div>
+              <div className="empty-cart-icon"><ShoppingBasket size={75} color="#f71414" /></div>
               <div className="empty-cart-text">Your cart is empty</div>
               <button 
                 className="continue-shopping-btn"
@@ -125,7 +128,7 @@ function Checkout() {
               </div>
 
               <div className='pay-button'>
-                <button>Proceed to Payment</button>
+                <button onClick={() => navigate('/placeorder')}>Proceed to Payment</button>
               </div>
             </>
           )}

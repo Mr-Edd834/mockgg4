@@ -29,7 +29,7 @@ import Myorder from './Components/Myorder';
 import Delightmeals from './categories/Delightmeals';
 import Fastfood from './categories/Fastfood';
 import Snacks from './categories/Snacks';
-import PrivateRoute from "./Components/ProtectedRoute";
+import PlaceOrder from "./Components/PlaceOrder";
 import AuthProvider from './Contexts/AuthContext';
 
 function App() {
@@ -51,6 +51,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
          <Route path="/partner" element={<Partner />} />
+         <Route path="/placeorder" element={<PlaceOrder />} />
           <Route path="/signup" element={<Signup />} />
          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/checkout" element={<Checkout />} />

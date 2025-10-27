@@ -127,10 +127,33 @@ margin-top: -10px;
   margin-right: 5px;
   margin-top: 0px;
   font-family: "Varela Round", sans-serif;
+  &:hover {
+    background: rgba(255, 255, 255, 0.5);
+    /* box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1); */
+    cursor: pointer;
+    color: #f71414;
+    transform: translateY(-1px);
+    /* box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.432); */
+    transition: all 0.5s ease;
+    user-select: none;
+    font-size: 18px;
+    font-weight: 500;
+    border: 1px solid #f71414;
 }
-.meals-order-button button:hover{
+&:active {
+    transform: translateY(1px);
+    /* box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.473);
+}
+&:focus {
+    /* border-color: #f71414; */
+    /* background: rgba(255, 1, 1, 0.493); */
+    /* box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1); */
+}
+
+}
+/* .meals-order-button button:hover{
   background-color:  #d40303;
-}
+} */
 
 .quantity{
   font-size: 16px;
