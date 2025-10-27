@@ -13,8 +13,8 @@ function Delightmeals() {
     backgroundImage: "url('https://images.unsplash.com/flagged/photo-1593005510509-d05b264f1c9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVkfGVufDB8fDB8fHww')"
   };
   
-  // Get meals from context
-  const {fullMealsMenu} = useContext(storeContext);
+  // Get meals and cart functions from context
+  const {fullMealsMenu, addToCart} = useContext(storeContext);
   
   // State for quantities and favorites - keyed by meal ID
   const [quantities, setQuantities] = useState({});
@@ -49,6 +49,28 @@ function Delightmeals() {
       ...prev,
       [mealId]: !prev[mealId]
     }));
+  };
+
+  const handleGrubIt = (meal) => {
+    const currentQuantity = quantities[meal.id] || 0;
+    const quantityToAdd = currentQuantity === 0 ? 1 : currentQuantity;
+    
+    // Add to cart
+    addToCart(meal, quantityToAdd);
+    
+    // If quantity was 0, set it to 1, otherwise increment
+    if (currentQuantity === 0) {
+      setQuantities((prev) => ({
+        ...prev,
+        [meal.id]: 1
+      }));
+    } else {
+      // Increment the quantity for next click
+      setQuantities((prev) => ({
+        ...prev,
+        [meal.id]: currentQuantity + 1
+      }));
+    }
   };
 
   return (
@@ -107,7 +129,7 @@ function Delightmeals() {
                 <hr className='meals-horizontal-line'></hr>
                 
                 <div className='meals-order-button'>
-                  <button onClick={() => increase(meal.id)}>Grub it!</button>
+                  <button onClick={() => handleGrubIt(meal)}>Grub it!</button>
                 </div>
               </div>
             ))}

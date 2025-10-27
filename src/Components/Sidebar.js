@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import {
   LayoutDashboard,
   Heart,
@@ -9,11 +9,15 @@ import {
 } from "lucide-react"; // <-- icon pack
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
+import { storeContext } from "../Contexts/storeContext";
 
 const Sidebar = ({ onToggle }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [activeItem, setActiveItem] = useState("dashboard");
-  const [hasCartItems, setHasCartItems] = useState(false);
+  
+  // Get cart items from context
+  const { cartItems } = useContext(storeContext);
+  const hasCartItems = cartItems && cartItems.length > 0;
 
   const sidebarRef = useRef(null);
   
@@ -108,8 +112,6 @@ const Sidebar = ({ onToggle }) => {
             <button className="toggle-btn" onClick={toggleSidebar}>
               ←
             </button>
-<button className="shiny-btn" onClick={() => setHasCartItems(!hasCartItems)}> Cart Dot</button>
-
           </div>
           <div className="sidebar-menu">
             {menuItems.map((item) => (

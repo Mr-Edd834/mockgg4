@@ -12,8 +12,8 @@ function Shopping() {
     backgroundImage: "url('https://images.unsplash.com/flagged/photo-1593005510509-d05b264f1c9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVkfGVufDB8fDB8fHww')"
   };
   
-  // Get grubmart items from context
-  const {grubmartMenu} = useContext(storeContext);
+  // Get grubmart items and cart functions from context
+  const {grubmartMenu, addToCart} = useContext(storeContext);
   
   // State for quantities and favorites - keyed by item ID
   const [quantities, setQuantities] = useState({});
@@ -48,6 +48,28 @@ function Shopping() {
       ...prev,
       [itemId]: !prev[itemId]
     }));
+  };
+
+  const handleGrubIt = (item) => {
+    const currentQuantity = quantities[item.id] || 0;
+    const quantityToAdd = currentQuantity === 0 ? 1 : currentQuantity;
+    
+    // Add to cart
+    addToCart(item, quantityToAdd);
+    
+    // If quantity was 0, set it to 1, otherwise increment
+    if (currentQuantity === 0) {
+      setQuantities((prev) => ({
+        ...prev,
+        [item.id]: 1
+      }));
+    } else {
+      // Increment the quantity for next click
+      setQuantities((prev) => ({
+        ...prev,
+        [item.id]: currentQuantity + 1
+      }));
+    }
   };
 
   return (
@@ -106,7 +128,7 @@ function Shopping() {
                 <hr className='meals-horizontal-line'></hr>
                 
                 <div className='meals-order-button'>
-                  <button onClick={() => increase(item.id)}>Grub it!</button>
+                  <button onClick={() => handleGrubIt(item)}>Grub it!</button>
                 </div>
               </div>
             ))}
