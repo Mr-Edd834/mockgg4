@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   LayoutDashboard,
   Heart,
@@ -9,11 +9,16 @@ import {
 } from "lucide-react";
 import "./BottomNavbar.css";
 import { Link, useLocation } from "react-router-dom";
+import { storeContext } from "../Contexts/storeContext";
 
 const BottomNavbar = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
+  
+  // Get cart items from context
+  const { cartItems } = useContext(storeContext);
+  const hasCartItems = cartItems && cartItems.length > 0;
 
   const menuItems = [
     { id: "dashboard", icon: <LayoutDashboard size={24} />, path: "/" },
@@ -65,7 +70,7 @@ const BottomNavbar = () => {
           >
             <span className="nav-icon">
               {item.icon}
-              {item.id === "checkout" && <span className="cart-dot"></span>}
+              {item.id === "checkout" && hasCartItems && <span className="cart-dot"></span>}
             </span>
           </div>
         </Link>
