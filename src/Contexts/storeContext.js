@@ -3,6 +3,7 @@ import React from "react";
 import fastFoodMenu from "../food/Fastmeal";
 import fullMealsMenu from "../food/Fullmeal";
 import snackFoodMenu from "../food/Snackmeal";
+import grubmartMenu from "../food/Grubmart";
 
 export const storeContext = createContext(null);
 
@@ -10,7 +11,8 @@ const StoreContextProvider = (props) => {
   const contextValue = {
     fullMealsMenu,
     fastFoodMenu,
-    snackFoodMenu
+    snackFoodMenu,
+    grubmartMenu
   };
 
   return (
