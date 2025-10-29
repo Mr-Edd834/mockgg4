@@ -1,7 +1,7 @@
 import './Shopping.css';
 import React from 'react';
 import '../Cards/Meals.css';    
-import { Heart, Star } from "lucide-react";
+import { Heart, Star, Clock } from "lucide-react";
 import { useState } from "react";   
 import { Plus, Minus } from "lucide-react";
 import {storeContext} from "../Contexts/storeContext";
@@ -13,7 +13,7 @@ function Shopping() {
   };
   
   // Get grubmart items and cart functions from context
-  const {grubmartMenu, addToCart} = useContext(storeContext);
+  const {grubmartMenu, addToCart, loading, error} = useContext(storeContext);
   
   // State for quantities and favorites - keyed by item ID
   const [quantities, setQuantities] = useState({});
@@ -79,7 +79,39 @@ function Shopping() {
       <div className="delightmeals-cards-wrapper">
         <div className="slide-top">
           <div className='page-content-delightmeals'>
-            {grubmartMenu && grubmartMenu.map((item) => (
+            {/* Loading State */}
+            {loading && (
+              <div style={{ 
+                textAlign: 'center', 
+                padding: '50px', 
+                fontSize: '18px',
+                color: '#374151',
+                width: '100%'
+              }}>
+                <div style={{ fontSize: '24px', marginBottom: '10px' }}>🛒</div>
+                Loading GrubMart items...
+              </div>
+            )}
+
+            {/* Error State */}
+            {error && !loading && (
+              <div style={{ 
+                textAlign: 'center', 
+                padding: '50px', 
+                fontSize: '18px',
+                color: '#ef4444',
+                width: '100%',
+                backgroundColor: '#fee2e2',
+                borderRadius: '8px',
+                margin: '20px'
+              }}>
+                <div style={{ fontSize: '24px', marginBottom: '10px' }}>⚠️</div>
+                {error}
+              </div>
+            )}
+
+            {/* Products Display */}
+            {!loading && !error && grubmartMenu && grubmartMenu.map((item) => (
               <div key={item.id} className="MealsCard">
                 <img className='meals-card-image' src={item.image} alt={item.name} />
                 
@@ -95,7 +127,10 @@ function Shopping() {
                     <Star size={14} fill="#fbbf24" stroke="#fbbf24" />
                     <span>{item.rating}</span>
                   </div>
-                  <div>⏱️ {item.prepTime}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Clock size={14} stroke="#6b7280" />
+                    <span>{item.prepTime}</span>
+                  </div>
                 </div>
                 
                 <hr className='meals-horizontal-line'></hr>

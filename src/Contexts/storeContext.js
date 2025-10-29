@@ -1,14 +1,39 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import React from "react";
-import fastFoodMenu from "../food/Fastmeal";
-import fullMealsMenu from "../food/Fullmeal";
-import snackFoodMenu from "../food/Snackmeal";
-import grubmartMenu from "../food/Grubmart";
+import { productAPI } from "../services/api";
 
 export const storeContext = createContext(null);
 
 const StoreContextProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch products from backend on component mount
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const products = await productAPI.listProducts();
+        setAllProducts(products);
+      } catch (err) {
+        console.error('Failed to fetch products:', err);
+        setError('Failed to load products. Please check your connection.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  // Filter products by category
+  const fullMealsMenu = allProducts.filter(product => product.category === "DelightMeals");
+  const fastFoodMenu = allProducts.filter(product => product.category === "Fastfood");
+  const snackFoodMenu = allProducts.filter(product => product.category === "Snacks");
+  const grubmartMenu = allProducts.filter(product => product.category === "GrubMart");
 
   // Add item to cart or update quantity if already exists
   const addToCart = (item, quantity) => {
@@ -78,7 +103,10 @@ const StoreContextProvider = (props) => {
     updateCartItemQuantity,
     removeFromCart,
     clearCart,
-    getCartTotal
+    getCartTotal,
+    loading,
+    error,
+    allProducts
   };
 
   return (

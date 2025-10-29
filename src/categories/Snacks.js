@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './Snacks.css';
 import '../Cards/Meals.css';
-import { Heart, Star, Plus, Minus } from "lucide-react";
-import snackFoodMenu from '../food/Snackmeal';
+import { Heart, Star, Plus, Minus, Clock } from "lucide-react";
 import { storeContext } from '../Contexts/storeContext';
 
 function Snacks() {
@@ -10,8 +9,8 @@ function Snacks() {
     backgroundImage: "url('https://images.unsplash.com/flagged/photo-1593005510509-d05b264f1c9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVkfGVufDB8fDB8fHww')"
   };
 
-  // Get addToCart from context
-  const { addToCart } = useContext(storeContext);
+  // Get snack menu and cart functions from context
+  const { snackFoodMenu, addToCart, loading, error } = useContext(storeContext);
 
   // State for quantities and favorites - keyed by meal ID
   const [quantities, setQuantities] = useState({});
@@ -77,7 +76,39 @@ function Snacks() {
       <div className="snacks-cards-wrapper">
         <div className="slide-top">
           <div className='page-content-snacks'>
-            {snackFoodMenu && snackFoodMenu.map((meal) => (
+            {/* Loading State */}
+            {loading && (
+              <div style={{ 
+                textAlign: 'center', 
+                padding: '50px', 
+                fontSize: '18px',
+                color: '#374151',
+                width: '100%'
+              }}>
+                <div style={{ fontSize: '24px', marginBottom: '10px' }}>🍿</div>
+                Loading snacks...
+              </div>
+            )}
+
+            {/* Error State */}
+            {error && !loading && (
+              <div style={{ 
+                textAlign: 'center', 
+                padding: '50px', 
+                fontSize: '18px',
+                color: '#ef4444',
+                width: '100%',
+                backgroundColor: '#fee2e2',
+                borderRadius: '8px',
+                margin: '20px'
+              }}>
+                <div style={{ fontSize: '24px', marginBottom: '10px' }}>⚠️</div>
+                {error}
+              </div>
+            )}
+
+            {/* Products Display */}
+            {!loading && !error && snackFoodMenu && snackFoodMenu.map((meal) => (
               <div key={meal.id} className="MealsCard">
                 <img className='meals-card-image' src={meal.image} alt={meal.name} />
                 
@@ -93,7 +124,10 @@ function Snacks() {
                     <Star size={14} fill="#fbbf24" stroke="#fbbf24" />
                     <span>{meal.rating}</span>
                   </div>
-                  <div>⏱️ {meal.prepTime}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <Clock size={14} stroke="#6b7280" />
+                    <span>{meal.prepTime}</span>
+                  </div>
                 </div>
                 
                 <hr className='meals-horizontal-line'></hr>
