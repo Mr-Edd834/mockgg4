@@ -1,193 +1,366 @@
-.placeorder-full-page-background{
-     /* instead of fixed */
+/* PlaceOrder Page - Glass Morphism Style */
+
+.placeorder-full-page-background {
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    min-height: 100vh; /* grows beyond viewport if content is long */
-    background-size:cover !important;
+    right: 0;
+    bottom: 0;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 990;
-}
-    .placeorder-page-header{
-    padding: 30px;
-    gap: 20px;
-    border-radius: 10px;    
-    width: 1000px;
-    height: auto;
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    margin:auto;
-    user-select: none;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
-    }
-    .location-input h2{
-        text-align: center;
-        font-size: 30px;
-        font-weight: 600;
-        color: #ffffff;
-        font-family: quicksand, sans-serif;
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
-    .phone-number-input h2{
-        text-align: center;
-        font-size: 30px;
-        font-weight: 600;
-        color: #ffffff;
-        font-family: quicksand, sans-serif;
-        margin-bottom: 10px;
-        margin-top: 10px;
-    }
-.location-input input{
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-size: 16px;
-    font-family: quicksand, sans-serif;
-    resize: vertical;
-    width: 300px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    outline: none;
-    transition: all 0.3s ease;
-    &:focus {
-        border-color: #f71414;
-        background: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1);
-    }
-    &::placeholder {
-        color: rgba(255, 255, 255, 0.616);
-        position: center;
-    }
+    justify-content: flex-start;
+    padding: 40px 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-.phone-number-input input{
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-size: 16px;
-    font-family: quicksand, sans-serif;
-    resize: vertical;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    outline: none;
-    transition: all 0.3s ease;
-    &:focus {
-        border-color: #f71414;
-        background: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1);
-    }
-    &::placeholder {
-        color: rgba(255, 255, 255, 0.616);
-    }
-}
-.payment-method-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-}
-.payment-method-container h1{
-    text-align: center;
-    font-size: 30px;
-    font-weight: 600;
-    color: #ffffff;
-    font-family: quicksand, sans-serif;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    user-select: none;
-    text-align: center;
 
+.placeorder-full-page-background > * {
+    position: relative;
+    z-index: 1;
 }
-.payment-method-option{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 10px;
+
+/* Header Section - Glass Morphism */
+.placeorder-page-header {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-size: 16px;
-    font-family: quicksand, sans-serif;
-    resize: vertical;
-    width: 50%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    color: #ffffff;
-    outline: none;
-    user-select: none;
-    transition: all 0.3s ease;
-    &:hover {
-        background: rgba(255, 255, 255, 0.5);
-        box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1);
-        cursor: pointer;
-        color: #f71414;
-        transform: translateY(-2px);
-        box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1);
-        transition: all 0.3s ease;
-        user-select: none;
-        font-size: 20px;
-        font-weight: 700;
-    }
-    &:active {
-        transform: translateY(2px);
-        box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1);
-    }
-    &:focus {
-        border-color: #f71414;
-        background: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 0 0 3px rgba(247, 20, 20, 0.1);
-    }
-    &::placeholder {
-        color: rgba(255, 255, 255, 0.616);
-    }
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
-.payment-button{
-    margin-top: 10px;
-    margin-bottom: 50px;
-    border-radius: 20px;
-    padding:10px;
-    background: linear-gradient(135deg, #f73614 0%, #f71414 100%);
+
+.location-input,
+.phone-number-input {
+    margin-bottom: 25px;
+}
+
+.location-input:last-child,
+.phone-number-input:last-child {
+    margin-bottom: 0;
+}
+
+.placeorder-page-header h2 {
     color: #ffffff;
-    user-select: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 100%;
-    border: none;
-    font-size: 16px;
-    font-family: quicksand, sans-serif;
+    font-size: 18px;
     font-weight: 600;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.placeorder-page-header input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.placeorder-page-header input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.placeorder-page-header input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+/* Payment Method Container - Glass Morphism */
+.payment-method-container {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.payment-method-container h1 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.payment-method-option {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
     cursor: pointer;
     transition: all 0.3s ease;
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 0 0 3px rgba(247, 54, 20, 0.3);
-        background: linear-gradient(135deg, #f71414 0%, #f71414 100%);
-        color: #ffffff;
-        border: none;
+}
+
+.payment-method-option:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+.payment-method-option.selected {
+    background: rgba(255, 255, 255, 0.35);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.3);
+}
+
+.payment-method-option p {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Details Dropdown - Glass Morphism */
+.card-details-dropdown {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-details-dropdown h3 {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-input-full,
+.card-input-half {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.card-details-dropdown label {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card-details-dropdown input {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 15px;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+}
+
+.card-details-dropdown input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.card-details-dropdown input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Payment Button - Glass Morphism */
+.payment-button {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    padding: 18px 40px;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 600px;
+}
+
+.payment-button:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+}
+
+.payment-button:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .placeorder-full-page-background {
+        padding: 30px 15px;
+    }
+
+    .placeorder-page-header,
+    .payment-method-container,
+    .payment-button {
+        max-width: 100%;
+    }
+
+    .placeorder-page-header {
+        padding: 25px 20px;
+    }
+
+    .placeorder-page-header h2 {
         font-size: 16px;
-        font-family: quicksand, sans-serif;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
     }
-    &:active {
-        transform: translateY(2px);
-        box-shadow: 0 0 0 3px rgba(247, 54, 20, 0.3);
+
+    .placeorder-page-header input {
+        padding: 12px 16px;
+        font-size: 15px;
     }
-    &:focus {
-        border-color: #f71414;
-        box-shadow: 0 0 0 3px rgba(247, 54, 20, 0.3);
+
+    .payment-method-container {
+        padding: 25px 20px;
+    }
+
+    .payment-method-container h1 {
+        font-size: 20px;
+    }
+
+    .payment-method-option {
+        padding: 16px;
+    }
+
+    .payment-method-option p {
+        font-size: 16px;
+    }
+
+    .card-details-dropdown {
+        padding: 20px 15px;
+    }
+
+    .card-input-row {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-button {
+        padding: 16px 30px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .placeorder-full-page-background {
+        padding: 20px 10px;
+    }
+
+    .placeorder-page-header {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+
+    .placeorder-page-header h2 {
+        font-size: 15px;
+    }
+
+    .payment-method-container {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+
+    .payment-method-container h1 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .payment-method-option {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .payment-method-option svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .payment-method-option p {
+        font-size: 15px;
+    }
+
+    .card-details-dropdown {
+        padding: 18px 12px;
+    }
+
+    .card-details-dropdown h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .card-details-dropdown input {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .payment-button {
+        padding: 14px 25px;
+        font-size: 16px;
     }
 }

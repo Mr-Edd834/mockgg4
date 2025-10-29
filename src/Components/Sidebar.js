@@ -15,9 +15,10 @@ const Sidebar = ({ onToggle }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [activeItem, setActiveItem] = useState("dashboard");
   
-  // Get cart items from context
-  const { cartItems } = useContext(storeContext);
+  // Get cart items and pending orders count from context
+  const { cartItems, getPendingOrdersCount } = useContext(storeContext);
   const hasCartItems = cartItems && cartItems.length > 0;
+  const pendingOrdersCount = getPendingOrdersCount();
 
   const sidebarRef = useRef(null);
   
@@ -97,6 +98,7 @@ const Sidebar = ({ onToggle }) => {
              <span className="menu-icon">
   {item.icon}
   {item.id === "bills" && hasCartItems && <span className="cart-dot"></span>}
+  {item.id === "food-order" && pendingOrdersCount > 0 && <span className="cart-dot"></span>}
 </span>
 
                 </Link>
@@ -124,6 +126,7 @@ const Sidebar = ({ onToggle }) => {
                 <span className="menu-icon">
   {item.icon}
   {item.id === "bills" && hasCartItems && <span className="cart-dot"></span>}
+  {item.id === "food-order" && pendingOrdersCount > 0 && <span className="cart-dot"></span>}
 </span>
 
                 <span className="menu-label">{item.label}</span>

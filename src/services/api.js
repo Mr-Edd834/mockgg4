@@ -31,7 +31,7 @@ export const productAPI = {
           price: item.price,
           category: item.category,
           image: `${API_URL}/images/${item.image}`, // Full image URL
-          prepTime: item.prepTime || 'N/A', // Use actual prepTime from database
+          prepTime: item.prepTime || '--', // Use actual prepTime from database, show -- if not set
           // Add default values for fields not in database
           rating: item.rating || 4.5
         }));
@@ -69,6 +69,82 @@ export const productAPI = {
   getImageURL: (filename) => {
     return `${API_URL}/images/${filename}`;
   },
+};
+
+// Order API endpoints
+export const orderAPI = {
+  /**
+   * Create a new order
+   * @param {Object} orderData - Order details
+   * @returns {Promise<Object>} Created order
+   */
+  createOrder: async (orderData) => {
+    try {
+      const response = await api.post('/api/orders/create', orderData);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating order:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Get all orders (for admin)
+   * @returns {Promise<Array>} List of all orders
+   */
+  listOrders: async () => {
+    try {
+      const response = await api.get('/api/orders/list');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching orders:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Get active orders
+   * @returns {Promise<Array>} List of active orders
+   */
+  getActiveOrders: async () => {
+    try {
+      const response = await api.get('/api/orders/active');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching active orders:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Get completed orders
+   * @returns {Promise<Array>} List of completed orders
+   */
+  getCompletedOrders: async () => {
+    try {
+      const response = await api.get('/api/orders/completed');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching completed orders:', error);
+      throw error;
+    }
+  },
+
+  /**
+   * Update order status
+   * @param {String} orderId - Order ID
+   * @param {String} status - New status
+   * @returns {Promise<Object>} Updated order
+   */
+  updateOrderStatus: async (orderId, status) => {
+    try {
+      const response = await api.put('/api/orders/status', { orderId, status });
+      return response.data;
+    } catch (error) {
+      console.error('Error updating order status:', error);
+      throw error;
+    }
+  }
 };
 
 export default api;

@@ -1,11 +1,343 @@
-.myorder-content{
-    height: 100vh;
+/* MyOrder Page Styles */
+
+.myorder-empty-content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 20px;
-    font-family: 'Poppins', sans-serif;
-    color: #050505;
+    justify-content: center;
+    min-height: 60vh;
+    gap: 30px;
+    color: #000000;
     user-select: none;
+}
+
+.myorder-empty-content h1 {
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.myorder-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.myorder-header {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.myorder-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Order Card */
+.myorder-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.myorder-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.myorder-card.greyed-out {
+    opacity: 0.5;
+    background: rgba(200, 200, 200, 0.5);
+    filter: grayscale(0.8);
+    pointer-events: none;
+}
+
+/* Order Header */
+.myorder-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.myorder-id {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.myorder-label {
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.myorder-value {
+    font-weight: 700;
+    color: #1f2937;
+    font-size: 16px;
+}
+
+.myorder-date {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* Order Items List */
+.myorder-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.myorder-item-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto auto;
+    gap: 15px;
+    align-items: center;
+    padding: 12px;
+    background: #f9fafb;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.myorder-item-row:hover {
+    background: #f3f4f6;
+}
+
+.myorder-item-image-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.myorder-item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.myorder-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.myorder-item-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+}
+
+.myorder-item-category {
+    font-size: 13px;
+    color: #6b7280;
+    margin: 0;
+}
+
+.myorder-item-quantity {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    padding: 6px 12px;
+    background: #e5e7eb;
+    border-radius: 6px;
+}
+
+.myorder-item-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2937;
+    min-width: 120px;
+    text-align: right;
+}
+
+/* Order Total */
+.myorder-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-top: 2px solid #e5e7eb;
+    margin-bottom: 20px;
+}
+
+.myorder-total-label {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.myorder-total-value {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1f2937;
+}
+
+/* Status Section */
+.myorder-status-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px;
+    border: 3px solid;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.myorder-status-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.status-icon {
+    flex-shrink: 0;
+}
+
+.spinning {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.myorder-status-message {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Order Arrived Button */
+.myorder-arrived-btn {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+}
+
+.myorder-arrived-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.myorder-arrived-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .myorder-content {
+        padding: 30px 15px;
+    }
+
+    .myorder-header {
+        font-size: 26px;
+    }
+
+    .myorder-card {
+        padding: 20px;
+    }
+
+    .myorder-item-row {
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: auto auto;
+        gap: 10px;
+    }
+
+    .myorder-item-image-container {
+        width: 60px;
+        height: 60px;
+    }
+
+    .myorder-item-details {
+        grid-column: 2;
+    }
+
+    .myorder-item-quantity {
+        grid-column: 1;
+        justify-self: start;
+    }
+
+    .myorder-item-price {
+        grid-column: 2;
+        justify-self: end;
+        text-align: right;
+    }
+
+    .myorder-status-section {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .myorder-status-content {
+        justify-content: center;
+    }
+
+    .myorder-arrived-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .myorder-empty-content h1 {
+        font-size: 24px;
+    }
+
+    .myorder-header {
+        font-size: 22px;
+    }
+
+    .myorder-card {
+        padding: 15px;
+    }
+
+    .myorder-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .myorder-item-name {
+        font-size: 14px;
+    }
+
+    .myorder-item-price {
+        font-size: 14px;
+    }
+
+    .myorder-total-label,
+    .myorder-total-value {
+        font-size: 16px;
+    }
+
+    .myorder-status-message {
+        font-size: 14px;
+    }
 }

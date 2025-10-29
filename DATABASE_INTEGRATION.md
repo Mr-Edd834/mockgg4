@@ -33,7 +33,7 @@ Your GoGrub frontend is now fully integrated with your backend database. Product
   - Dynamic category filtering based on database category field
   - Products automatically filter into:
     - `fullMealsMenu` → Products where `category === "DelightMeals"`
-    - `fastFoodMenu` → Products where `category === "Fastfood"`
+    - `fastFoodMenu` → Products where `category === "FastFood"`
     - `snackFoodMenu` → Products where `category === "Snacks"`
     - `grubmartMenu` → Products where `category === "GrubMart"`
 
@@ -86,7 +86,7 @@ Your GoGrub frontend is now fully integrated with your backend database. Product
 Products are automatically displayed in the correct category based on the `category` field in your database:
 
 - **"DelightMeals"** → Shown in Delight Meals page
-- **"Fastfood"** → Shown in Fast Feast page
+- **"FastFood"** → Shown in Fast Feast page
 - **"Snacks"** → Shown in Snack Hub page
 - **"GrubMart"** → Shown in GrubMart page
 
@@ -163,7 +163,7 @@ All existing functionality remains intact:
 ### Loading States:
 Each category now shows a beautiful loading message while fetching:
 - 🍴 "Loading delicious meals..." (DelightMeals)
-- 🍔 "Loading fast food items..." (Fastfood)
+- 🍔 "Loading fast food items..." (FastFood)
 - 🍿 "Loading snacks..." (Snacks)
 - 🛒 "Loading GrubMart items..." (GrubMart)
 
@@ -182,7 +182,7 @@ To add new products, use your ggadmin panel:
 2. Fill in product details
 3. **Important**: Select the correct category:
    - "DelightMeals" for balanced meals
-   - "Fastfood" for quick bites
+   - "FastFood" for quick bites
    - "Snacks" for light items
    - "GrubMart" for grocery items
 4. Upload image
@@ -211,7 +211,7 @@ The new product will automatically appear in the correct category on your mockgg
 ### Wrong category display?
 - Check the `category` field in database exactly matches:
   - "DelightMeals" (case-sensitive)
-  - "Fastfood" (case-sensitive)
+  - "FastFood" (case-sensitive)
   - "Snacks" (case-sensitive)
   - "GrubMart" (case-sensitive)
 

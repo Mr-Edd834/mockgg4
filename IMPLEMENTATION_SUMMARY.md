@@ -53,7 +53,7 @@ Products display based on database `category` field:
 | Database Category | Displays In |
 |------------------|-------------|
 | "DelightMeals" | Delight Meals page |
-| "Fastfood" | Fast Feast page |
+| "FastFood" | Fast Feast page |
 | "Snacks" | Snack Hub page |
 | "GrubMart" | GrubMart page |
 

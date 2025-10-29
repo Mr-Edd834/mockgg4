@@ -10,11 +10,10 @@ function Fastfood() {
   };
 
   // Get fastfood menu and cart functions from context
-  const { fastFoodMenu, addToCart, loading, error } = useContext(storeContext);
+  const { fastFoodMenu, addToCart, loading, error, toggleFavorite, isInFavorites } = useContext(storeContext);
 
-  // State for quantities and favorites - keyed by meal ID
+  // State for quantities - keyed by meal ID
   const [quantities, setQuantities] = useState({});
-  const [favorites, setFavorites] = useState({});
 
   // Utility function to limit description to 10 words
   const truncateDescription = (text, wordLimit = 10) => {
@@ -37,13 +36,6 @@ function Fastfood() {
     setQuantities((prev) => ({
       ...prev,
       [mealId]: Math.max((prev[mealId] || 0) - 1, 0)
-    }));
-  };
-
-  const toggleFavorite = (mealId) => {
-    setFavorites((prev) => ({
-      ...prev,
-      [mealId]: !prev[mealId]
     }));
   };
 
@@ -137,12 +129,12 @@ function Fastfood() {
                 <div className='meals-icons'>
                   <Heart 
                     size={16} 
-                    fill={favorites[meal.id] ? "#374151" : "none"}
-                    stroke={favorites[meal.id] ? "#374151" : "#9CA3AF"}
-                    onClick={() => toggleFavorite(meal.id)}
+                    fill={isInFavorites(meal.id) ? "#374151" : "none"}
+                    stroke={isInFavorites(meal.id) ? "#374151" : "#9CA3AF"}
+                    onClick={() => toggleFavorite(meal)}
                     style={{ 
                       cursor: 'pointer',
-                      color: favorites[meal.id] ? "#374151" : "#9CA3AF",
+                      color: isInFavorites(meal.id) ? "#374151" : "#9CA3AF",
                       transition: 'all 0.3s ease'
                     }}
                   />

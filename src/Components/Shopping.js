@@ -13,11 +13,10 @@ function Shopping() {
   };
   
   // Get grubmart items and cart functions from context
-  const {grubmartMenu, addToCart, loading, error} = useContext(storeContext);
+  const {grubmartMenu, addToCart, loading, error, toggleFavorite, isInFavorites} = useContext(storeContext);
   
-  // State for quantities and favorites - keyed by item ID
+  // State for quantities - keyed by item ID
   const [quantities, setQuantities] = useState({});
-  const [favorites, setFavorites] = useState({});
 
   // Utility function to limit description to 10 words
   const truncateDescription = (text, wordLimit = 10) => {
@@ -40,13 +39,6 @@ function Shopping() {
     setQuantities((prev) => ({
       ...prev,
       [itemId]: Math.max((prev[itemId] || 0) - 1, 0)
-    }));
-  };
-
-  const toggleFavorite = (itemId) => {
-    setFavorites((prev) => ({
-      ...prev,
-      [itemId]: !prev[itemId]
     }));
   };
 
@@ -140,12 +132,12 @@ function Shopping() {
                 <div className='meals-icons'>
                   <Heart 
                     size={16} 
-                    fill={favorites[item.id] ? "#374151" : "none"}
-                    stroke={favorites[item.id] ? "#374151" : "#9CA3AF"}
-                    onClick={() => toggleFavorite(item.id)}
+                    fill={isInFavorites(item.id) ? "#374151" : "none"}
+                    stroke={isInFavorites(item.id) ? "#374151" : "#9CA3AF"}
+                    onClick={() => toggleFavorite(item)}
                     style={{ 
                       cursor: 'pointer',
-                      color: favorites[item.id] ? "#374151" : "#9CA3AF",
+                      color: isInFavorites(item.id) ? "#374151" : "#9CA3AF",
                       transition: 'all 0.3s ease'
                     }}
                   />
