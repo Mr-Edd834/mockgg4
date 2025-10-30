@@ -13,7 +13,7 @@ const Login = () => {
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [loginError, setLoginError] = useState("");
 
-  const {login} = useAuth();
+  const {login, signInWithGoogle} = useAuth();
 
   useEffect(() => { 
     // Load saved email if remember me was checked
@@ -38,8 +38,29 @@ const Login = () => {
     return !nextErrors.email && !nextErrors.password;
   };
 
-  const handleGoogleSignIn = () => {
-    window.location.href = "https://ggbackend-1.onrender.com/auth/google";
+  const handleGoogleSignIn = async () => {
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
+    setLoginError("");
+
+    try {
+      const result = await signInWithGoogle();
+      
+      if (result.requiresProfile) {
+        // User needs to complete profile, redirect to signup
+        navigate("/signup");
+      } else {
+        // User already exists, redirect to home
+        console.log("✅ Logged in with Google");
+        navigate("/");
+      }
+    } catch (error) {
+      console.error("❌ Google sign-in failed:", error);
+      setLoginError(error.message || "Google sign-in failed");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (event) => {
@@ -47,25 +68,35 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [name]: value }));
   };
 
- const handleEmailSignIn = async (event) => {
-  event.preventDefault();
-  if (isSubmitting) return;
-  if (!validate()) return;
+  const handleEmailSignIn = async (event) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+    if (!validate()) return;
 
-  setIsSubmitting(true);
-  setLoginError("");
+    setIsSubmitting(true);
+    setLoginError("");
 
-  try {
-    await login(credentials.email, credentials.password);
-    console.log("✅ Login successful");
-    navigate("/"); // redirect to home
-  } catch (error) {
-    console.error("❌ Login failed:", error);
-    setLoginError(error.message || "An error occurred during login");
-  } finally {
-    setIsSubmitting(false);
-  }
-};
+    try {
+      await login(credentials.email, credentials.password);
+      
+      // Save email if remember me is checked
+      if (rememberMe) {
+        localStorage.setItem("gg_saved_email", credentials.email);
+        localStorage.setItem("gg_remember_me", "true");
+      } else {
+        localStorage.removeItem("gg_saved_email");
+        localStorage.removeItem("gg_remember_me");
+      }
+      
+      console.log("✅ Login successful");
+      navigate("/");
+    } catch (error) {
+      console.error("❌ Login failed:", error);
+      setLoginError(error.response?.data?.message || error.message || "An error occurred during login");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const loginBackgroundStyle = {
     backgroundImage: "url('https://images.unsplash.com/flagged/photo-1593005510509-d05b264f1c9c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVkfGVufDB8fDB8fHww')"
@@ -95,6 +126,7 @@ const Login = () => {
               type="button"
               className="google-button"
               onClick={handleGoogleSignIn}
+              disabled={isSubmitting}
             >
               <Chrome size={18} className="google-icon" />
               Continue with Google

@@ -16,9 +16,10 @@ const BottomNavbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const location = useLocation();
   
-  // Get cart items from context
-  const { cartItems } = useContext(storeContext);
+  // Get cart items and pending orders from context
+  const { cartItems, getPendingOrdersCount } = useContext(storeContext);
   const hasCartItems = cartItems && cartItems.length > 0;
+  const pendingOrdersCount = getPendingOrdersCount();
 
   const menuItems = [
     { id: "dashboard", icon: <LayoutDashboard size={24} />, path: "/" },
@@ -71,6 +72,7 @@ const BottomNavbar = () => {
             <span className="nav-icon">
               {item.icon}
               {item.id === "checkout" && hasCartItems && <span className="cart-dot"></span>}
+              {item.id === "myorder" && pendingOrdersCount > 0 && <span className="cart-dot"></span>}
             </span>
           </div>
         </Link>

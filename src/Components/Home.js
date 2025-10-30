@@ -6,10 +6,14 @@ import {MapPin} from 'lucide-react';
 import {LogIn} from 'lucide-react';
 import SplitText from "../Animations/SplitText";
 import ScrollFloat from '../Animations/ScrollFloat';
+import { useAuth } from '../Contexts/AuthContext';
 
 const Home = () => {
   const navigate = useNavigate();
   const whiteSectionRef = useRef(null);
+  const auth = useAuth();
+  const currentUser = auth?.currentUser;
+  const userProfile = auth?.userProfile;
 
   const homeBackgroundStyle = {
     backgroundImage: "url('https://i.pinimg.com/736x/ab/86/9b/ab869b111b99108f2615613537113ae9.jpg')"
@@ -77,7 +81,7 @@ const Home = () => {
       <div className="home-header-section">
         <div className="home-header-content">
           <SplitText
-            text="Welcome Mr.Edd,"
+            text={currentUser && userProfile ? `Welcome ${userProfile.username}!` : "Welcome to GoGrub!"}
             className="welcome-text"
             delay={100}
             duration={0.6}
@@ -96,7 +100,7 @@ const Home = () => {
               className="login-icon" 
               size={24} 
             />
-            <span className="login-text">Login</span>
+            <span className="login-text">{currentUser ? 'Account' : 'Login'}</span>
           </div>
         </div>
         

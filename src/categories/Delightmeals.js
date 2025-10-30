@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import {storeContext} from "../Contexts/storeContext";
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Delightmeals() {
   const checkoutBackgroundStyle = {
@@ -15,6 +16,7 @@ function Delightmeals() {
   
   // Get meals and cart functions from context
   const {fullMealsMenu, addToCart, loading, error, toggleFavorite, isInFavorites} = useContext(storeContext);
+  const navigate = useNavigate();
   
   // State for quantities - keyed by meal ID
   const [quantities, setQuantities] = useState({});

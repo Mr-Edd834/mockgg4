@@ -15,8 +15,12 @@ const app = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)
   : firebase.app(); // ✅ prevents double initialization
 
-
-// const app = firebase.initializeApp(firebaseConfig); 
-
 export const auth = app.auth();
+
+// Google Auth Provider
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: 'select_account'
+});
+
 export default app;
