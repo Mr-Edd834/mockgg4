@@ -5,7 +5,7 @@ import axios from 'axios';
 const AuthContext = React.createContext();
 
 // API URL from environment variable
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -47,7 +47,7 @@ async function signUp(email, password, username, phoneNumber) {
         return result;
     } catch (error) {
         console.error('Signup error:', error);
-        throw error;
+        throw { success: false, message: "Signup failed" };
     }
 }
 
@@ -66,8 +66,8 @@ async function login(email, password) {
         setUserProfile(response.data.user);
         return result;
     } catch (error) {
-        console.error('Login error:', error);
-        throw error;
+        console.error('Login error:', error.message);
+        throw { success: false, message: "Login failed" };
     }
 }
 
