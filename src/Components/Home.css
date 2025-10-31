@@ -757,7 +757,7 @@ justify-content: center;
   .cards-container .card {
     width: 100%;
     max-width: 165px;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 20px 20px 20px 20px;
   }
   
   .card-image {
@@ -845,7 +845,7 @@ justify-content: center;
   .cards-container .card {
     width: 100%;
     max-width: 150px;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 20px 20px 20px 20px;
   }
   
   .card-image {
@@ -920,7 +920,7 @@ justify-content: center;
   .cards-container .card {
     width: 100%;
     max-width: 140px;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 20px 20px 20px 20px;
   }
   
   .card-image {
