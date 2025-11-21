@@ -31,32 +31,32 @@ const BottomNavbar = () => {
   ];
 
   // Scroll detection to show/hide navbar
-  useEffect(() => {
-    let ticking = false;
+  // useEffect(() => {
+  //   let ticking = false;
 
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
+  //   const handleScroll = () => {
+  //     if (!ticking) {
+  //       window.requestAnimationFrame(() => {
+  //         const currentScrollY = window.scrollY;
 
-          if (currentScrollY < lastScrollY) {
-            // Scrolling UP → Show navbar
-            setIsVisible(true);
-          } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
-            // Scrolling DOWN (after 50px) → Hide navbar
-            setIsVisible(false);
-          }
+  //         if (currentScrollY < lastScrollY) {
+  //           // Scrolling UP → Show navbar
+  //           setIsVisible(true);
+  //         } else if (currentScrollY > lastScrollY && currentScrollY > 50) {
+  //           // Scrolling DOWN (after 50px) → Hide navbar
+  //           setIsVisible(false);
+  //         }
 
-          setLastScrollY(currentScrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
+  //         setLastScrollY(currentScrollY);
+  //         ticking = false;
+  //       });
+  //       ticking = true;
+  //     }
+  //   };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, [lastScrollY]);
 
   return (
     <nav className={`bottom-navbar ${isVisible ? "visible" : "hidden"}`}>
