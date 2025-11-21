@@ -64,7 +64,7 @@ const BottomNavbar = () => {
         <Link 
           key={item.id} 
           to={item.path} 
-          className="nav-item-link"
+          className="nav-item-link "
         >
           <div 
             className={`nav-item ${location.pathname === item.path ? "active" : ""}`}
