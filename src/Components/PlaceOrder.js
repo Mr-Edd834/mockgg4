@@ -76,7 +76,7 @@ const PlaceOrder = () => {
       }
       if (cartItems.length === 0) {
         alert('Your cart is empty');
-        navigate('/checkout');
+        navigate('/myorder');
         return;
       }
 
