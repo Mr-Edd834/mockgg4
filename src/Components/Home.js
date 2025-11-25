@@ -248,7 +248,7 @@ const Home = () => {
           <div className="footer-content-left">
           <h1>FOLLOW US:</h1>
           <Instagram size={24} color="white" />
-<a href="https://www.instagram.com/eddy62190/">@gogrub_official</a>
+<a href="https://www.instagram.com/gogrub_ke/">@gogrub_ke</a>
        
         </div>
         <p>© 2025 GoGrub. All rights reserved.</p>

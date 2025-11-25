@@ -1,14 +1,18 @@
 /* Home Header Section - Welcome, Login, Search */
 .home-header-section {
-  position: relative;
+  position: fixed;
   width: 100%;
   padding: 20px 20px 30px 140px;
-  z-index: 900;
+  z-index: 1000;
   background: linear-gradient(to bottom, 
     rgba(0, 0, 0, 0.4) 0%, 
     rgba(0, 0, 0, 0.2) 50%,
     transparent 100%);
   border-radius: 25px 25px 25px 25px;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-sizing: border-box;
+  margin-top: -15px;
 }
 
 /* Header Content - Welcome & Login in one row */
