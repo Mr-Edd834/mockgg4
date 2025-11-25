@@ -92,7 +92,7 @@ const PlaceOrder = () => {
         await placeOrder(orderDetails);
         
         alert('Order placed successfully! 🎉');
-        navigate('/myorders');
+        navigate('/myorder');
       } catch (error) {
         console.error('Error placing order:', error);
         alert('Failed to place order. Please try again.');
