@@ -3,6 +3,7 @@
   position: fixed;
   width: 100%;
   padding: 20px 20px 30px 140px;
+  margin-left: -10px;
   z-index: 1000;
   background: linear-gradient(to bottom, 
     rgba(0, 0, 0, 0.4) 0%, 
@@ -52,7 +53,7 @@
   -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
-  margin-left: 20px;
+  margin-left: -20px;
   display: flex;
   flex-direction: column;
   align-items: center;
