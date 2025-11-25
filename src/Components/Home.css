@@ -716,7 +716,7 @@ justify-content: center;
   
   .home-header-section {
     padding: 15px 15px 20px 20px;
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 0px 0px 25px 25px;
   }
   
   .welcome-text {
@@ -750,7 +750,7 @@ justify-content: center;
   
   .page-content {
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 70px;
   }
   
   .cards-grid-three {
@@ -898,7 +898,7 @@ justify-content: center;
 /* Tiny Mobile (≤320px) - Triangle Persists! */
 @media (max-width: 320px) {
   .home-header-section {
-    border-radius: 25px 25px 25px 25px;
+    border-radius: 0px 0px 25px 25px;
   }
   
   .welcome-text {
