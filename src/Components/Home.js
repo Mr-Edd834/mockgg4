@@ -202,7 +202,7 @@ const Home = () => {
   stagger={0.03}
   id="work-with-us"
 >
-  WORK WITH US
+  JOIN US !
 </ScrollFloat>
         {/* <h1>WORK WITH US</h1> */}
         {/* Container 3: Work with Us */}

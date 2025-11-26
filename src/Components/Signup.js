@@ -116,7 +116,7 @@ const Signup = () => {
       console.error("❌ Google sign-in failed:", error);
       setErrors((prev) => ({
         ...prev,
-        general: error.message || "Google sign-in failed",
+        general: error.response?.data?.message || error.message || "Google sign-in failed",
       }));
     } finally {
       setIsSubmitting(false);

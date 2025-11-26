@@ -57,7 +57,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error("❌ Google sign-in failed:", error);
-      setLoginError(error.message || "Google sign-in failed");
+      setLoginError( "Google sign-in failed");
     } finally {
       setIsSubmitting(false);
     }
@@ -92,7 +92,7 @@ const Login = () => {
       navigate("/");
     } catch (error) {
       console.error("❌ Login failed:", error);
-      setLoginError(error.response?.data?.message || error.message || "An error occurred during login");
+      setLoginError("An error occurred during login");
     } finally {
       setIsSubmitting(false);
     }

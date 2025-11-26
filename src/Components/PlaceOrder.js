@@ -8,6 +8,7 @@ const PlaceOrder = () => {
     const { placeOrder, cartItems } = useContext(storeContext);
     const navigate = useNavigate();
     
+    
     const [selectedPayment, setSelectedPayment] = useState('');
     const [location, setLocation] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
