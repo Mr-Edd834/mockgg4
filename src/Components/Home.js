@@ -102,7 +102,7 @@ const Home = () => {
             />
             <span className="login-text">{currentUser ? 'Account' : 'Login'}</span>
           </div>
-        </div>
+        </div> 
         
         <div className="input-wrapper">
           <MapPin className="input-icon" size={20} />  
